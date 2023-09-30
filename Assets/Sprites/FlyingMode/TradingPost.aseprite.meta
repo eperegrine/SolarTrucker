@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b00853a13c5232e47a91d88a09bdbb51
+guid: 03d8590fd3a6d15459cf71c8fadf8337
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -30,7 +30,7 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 0
+    spriteMeshType: 1
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
     spritePixelsToUnits: 32
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 638316804422441391
+  platformSettingsDirtyTick: 638316925704584116
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -117,7 +117,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: LoadingArea
+  - name: TradingPost
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -126,9 +126,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 32
-      height: 32
-    spriteID: e1a174851e1eaff4597f239945f52166
+      width: 512
+      height: 256
+    spriteID: de399609e8b841e4ea4f7ab8d5383c64
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,20 +140,20 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: -845484587
-    name: LoadingArea
+    guid: -608546017
+    name: TradingPost
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: LoadingArea
+    - name: TradingPost
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 32
-        height: 32
-      spriteId: e1a174851e1eaff4597f239945f52166
+        width: 512
+        height: 256
+      spriteId: de399609e8b841e4ea4f7ab8d5383c64
     linkedCells: []
     parentIndex: -1
   platformSettings:
@@ -192,4 +192,4 @@ ScriptedImporter:
     androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 32, y: 32}
+  canvasSize: {x: 512, y: 256}

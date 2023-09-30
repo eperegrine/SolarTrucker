@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 26dc0c17723356f49959f2995c7cc002
+guid: b00853a13c5232e47a91d88a09bdbb51
 ScriptedImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -30,10 +30,10 @@ ScriptedImporter:
     sRGBTexture: 1
     spriteMode: 2
     spriteExtrude: 1
-    spriteMeshType: 1
+    spriteMeshType: 0
     alignment: 0
     spritePivot: {x: 0.5, y: 0.5}
-    spritePixelsToUnits: 100
+    spritePixelsToUnits: 16
     spriteBorder: {x: 0, y: 0, z: 0, w: 0}
     spriteGenerateFallbackPhysicsShape: 0
     generateCubemap: 6
@@ -93,7 +93,7 @@ ScriptedImporter:
     addSortingGroup: 1
     addShadowCasters: 0
   importFileNodeState: 1
-  platformSettingsDirtyTick: 0
+  platformSettingsDirtyTick: 638316912093694145
   textureAssetName: 
   singleSpriteImportData:
   - name: 
@@ -117,7 +117,7 @@ ScriptedImporter:
     tessellationDetail: 0
     uvTransform: {x: 0, y: 0}
   animatedSpriteImportData:
-  - name: Ship-Small-Flyable
+  - name: LoadingArea
     originalName: 
     pivot: {x: 0.5, y: 0}
     alignment: 9
@@ -126,9 +126,9 @@ ScriptedImporter:
       serializedVersion: 2
       x: 4
       y: 4
-      width: 128
-      height: 128
-    spriteID: 71f5b5f91a9ee384691cf18a05b9f838
+      width: 32
+      height: 32
+    spriteID: e1a174851e1eaff4597f239945f52166
     spriteBone: []
     spriteOutline: []
     vertices: []
@@ -140,23 +140,56 @@ ScriptedImporter:
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
-    guid: 1688661198
-    name: Ship-Small-Flyable
+    guid: -845484587
+    name: LoadingArea
     layerFlags: 0
     layerType: 0
     blendMode: 0
     cells:
-    - name: Ship-Small-Flyable
+    - name: LoadingArea
       frameIndex: 0
       cellRect:
         x: 0
         y: 0
-        width: 128
-        height: 128
-      spriteId: 71f5b5f91a9ee384691cf18a05b9f838
+        width: 32
+        height: 32
+      spriteId: e1a174851e1eaff4597f239945f52166
     linkedCells: []
     parentIndex: -1
-  platformSettings: []
+  platformSettings:
+  - name: DefaultTexturePlatform
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Standalone
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
+  - name: Server
+    overridden: 0
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    androidETC2FallbackOverride: 0
   secondarySpriteTextures: []
   spritePackingTag: 
-  canvasSize: {x: 128, y: 128}
+  canvasSize: {x: 32, y: 32}
