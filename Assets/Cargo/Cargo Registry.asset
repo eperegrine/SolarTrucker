@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13c545df2f01421681e49c4f47ca6b03, type: 3}
+  m_Name: Cargo Registry
+  m_EditorClassIdentifier: 
+  CargoOptions:
+  - {fileID: 11400000, guid: 2145da368dfda224090cfc2061cc3b84, type: 2}
+  - {fileID: 11400000, guid: 8672f53337fda5843b7ac34467df899f, type: 2}
+  - {fileID: 11400000, guid: a611e4cf16606ab45a2bed19cb61d313, type: 2}
+  - {fileID: 11400000, guid: 9d24d80af33d6704ab4a32d362f8842b, type: 2}
+  - {fileID: 11400000, guid: 983b212cd07b4fa469a4a3ea75dd55f9, type: 2}
+  - {fileID: 11400000, guid: 96799e0dc10bab443af79ebe70dbb7a1, type: 2}
+  - {fileID: 11400000, guid: a9c867f5c068fed45a5e1fcfb9c5dd01, type: 2}
