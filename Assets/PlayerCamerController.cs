@@ -19,7 +19,6 @@ public class PlayerCamerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(Target.velocity.magnitude);
         var newSize = Target.velocity.magnitude;
         newSize = Mathf.Max(MinSize, newSize);
         newSize = Mathf.Min(MaxSize, newSize);
