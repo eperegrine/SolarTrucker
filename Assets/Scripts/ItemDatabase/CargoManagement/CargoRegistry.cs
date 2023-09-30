@@ -4,8 +4,6 @@ using UnityEngine;
 
 namespace CargoManagement
 {
-    
-    
     [CreateAssetMenu(fileName = "Cargo Registry", menuName = "Cargo/Registry")]
     public class CargoRegistry : ScriptableObject
     {

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TradingPost;
 using UnityEngine;
 using Utils;
 using Object = UnityEngine.Object;
