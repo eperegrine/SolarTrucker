@@ -20,6 +20,8 @@ public class ShipLoadingController : MonoBehaviour
     public float MoveSpeed = 5f;
     public float RotationSpeed = 180f;
     public CargoRegistry Registry;
+    public Collider2D LoadingArea;
+    public ContactFilter2D LoadingContactFilter;
     public List<MovableCargo> _MovableObjects;
     private MovableCargo _target;
 
@@ -60,9 +62,12 @@ public class ShipLoadingController : MonoBehaviour
         if (Confirm.triggered)
         {
             var load = new CargoLoad();
-            //TODO: limit to cargo in ship
+            var loadedCargo = inLoadingArea
+                .Select(loadedCollider => loadedCollider.GetComponent<MovableCargo>())
+                .Where(cargo => cargo != null).ToList();
+            Debug.Log($"Detected {loadedCargo.Count} items");
             //TODO: add storage relative point
-            load.LoadFromMovableCargo(transform.position, _MovableObjects);
+            load.LoadFromMovableCargo(transform.position, loadedCargo);
             saved = load.SaveToString();
             Debug.Log(saved);
         }
@@ -84,6 +89,8 @@ public class ShipLoadingController : MonoBehaviour
         }
         
     }
+    
+    List<Collider2D> inLoadingArea = new List<Collider2D>();
 
     void FixedUpdate()
     {
@@ -93,10 +100,13 @@ public class ShipLoadingController : MonoBehaviour
             var rotation = Rotate.ReadValue<float>();
 
             var delta = moveVector * (MoveSpeed * Time.fixedDeltaTime);
-            Debug.Log(delta);
             _target.Rigidbody.MovePosition((Vector2)_target.transform.position + delta);
             var rotDelta = -rotation * RotationSpeed * Time.fixedDeltaTime;
             _target.Rigidbody.MoveRotation(_target.transform.rotation.eulerAngles.z + rotDelta);
         }
+        
+        var count = LoadingArea.OverlapCollider(LoadingContactFilter, inLoadingArea);
+        Debug.Log(count);
+        
     }
 }
