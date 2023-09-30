@@ -176,26 +176,15 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "negative",
-                    "id": "dda3b559-24a7-4914-a2d6-79f493d1a712",
-                    "path": "<Gamepad>/leftShoulder",
+                    "name": "",
+                    "id": "c93d45fc-ec10-4faf-bc76-61a7e0f1087d",
+                    "path": "<Gamepad>/rightStick/x",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": "DefaultScheme",
                     "action": "Rotate",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "positive",
-                    "id": "1750a837-fdbc-4d12-954a-a6dbb95fdd6a",
-                    "path": "<Gamepad>/rightShoulder",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Rotate",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "",
