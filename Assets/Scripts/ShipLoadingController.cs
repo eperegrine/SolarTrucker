@@ -35,7 +35,9 @@ public class ShipLoadingController : MonoBehaviour
         Move = ActionMap.FindAction("Movement");
         Rotate = ActionMap.FindAction("Rotate");
         Confirm = ActionMap.FindAction("Confirm");
+        _MovableObjects = FindObjectsOfType<MovableCargo>().ToList();
         SelectMovable(_MovableObjects.First());
+        
     }
 
     public void SelectMovable(MovableCargo movableCargo)

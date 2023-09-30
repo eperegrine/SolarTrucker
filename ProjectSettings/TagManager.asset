@@ -41,3 +41,15 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: DockedShip
+    uniqueID: 1702352771
+    locked: 0
+  - name: LoadingArea
+    uniqueID: 3727907193
+    locked: 0
+  - name: MovableCargo
+    uniqueID: 3634209653
+    locked: 0
+  - name: Extra
+    uniqueID: 12448127
+    locked: 0
