@@ -19,7 +19,6 @@ namespace TradingPost
         //Component
         public float MoveSpeed = 5f;
         public float RotationSpeed = 180f;
-        public CargoRegistry Registry;
         public Collider2D LoadingArea;
         public ContactFilter2D LoadingContactFilter;
         public List<MovableCargo> _MovableObjects;
@@ -63,6 +62,12 @@ namespace TradingPost
 
             if (Confirm.triggered)
             {
+                TradingPostGameManager.Instance.GotoSpace();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Alpha1))
+            {
+                //Save
                 var load = new CargoLoad();
                 var loadedCargo = inLoadingArea
                     .Select(loadedCollider => loadedCollider.GetComponent<MovableCargo>())
@@ -84,10 +89,7 @@ namespace TradingPost
 
             if (Input.GetKeyDown(KeyCode.Alpha8))
             {
-                var load = CargoLoad.LoadFromString(saved);
-                _MovableObjects = load.Instantiate(transform.position, Registry);
-                _index = 0;
-                SelectMovable(_MovableObjects[_index]);
+                LoadCargo(saved);
             }
         
         }
@@ -110,6 +112,28 @@ namespace TradingPost
             var count = LoadingArea.OverlapCollider(LoadingContactFilter, inLoadingArea);
             Debug.Log(count);
         
+        }
+
+        public void LoadCargo(string currentCargo)
+        {
+            var load = CargoLoad.LoadFromString(currentCargo);
+            if (!load.IsEmpty)
+            {
+                _MovableObjects = load.Instantiate(transform.position, TradingPostGameManager.Instance.CargoRegistry);
+                _index = 0;
+                SelectMovable(_MovableObjects[_index]);
+            }
+        }
+
+        public string SaveCargoToJson()
+        {
+            var load = new CargoLoad();
+            var loadedCargo = inLoadingArea
+                .Select(loadedCollider => loadedCollider.GetComponent<MovableCargo>())
+                .Where(cargo => cargo != null).ToList();
+            //TODO: add storage relative point
+            load.LoadFromMovableCargo(transform.position, loadedCargo);
+            return load.SaveToString();
         }
     }
 }

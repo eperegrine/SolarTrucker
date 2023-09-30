@@ -44,6 +44,8 @@ namespace CargoManagement
             return JsonConvert.DeserializeObject<CargoLoad>(str);
         }
 
+        public bool IsEmpty => Items.Count == 0;
+        
         public List<MovableCargo> Instantiate(Vector3 core, CargoRegistry registry)
         {
             List<MovableCargo> newCargo = new List<MovableCargo>(Items.Count);

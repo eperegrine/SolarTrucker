@@ -1,6 +1,7 @@
 ﻿using CargoManagement;
 using SystemMap;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace TradingPost
 {
@@ -19,7 +20,9 @@ namespace TradingPost
                 return _instance;
             }
         }
-    
+
+        public ShipLoadingController ShipLoadingController;
+        
         public CargoRegistry CargoRegistry;
         public SystemRegistry SystemRegistry;
 
@@ -32,6 +35,19 @@ namespace TradingPost
 
                 Debug.Log($"At Trading Post: {info.name}\n{info.Description}");
             }
+
+            var currentCargo = PlayerPrefs.GetString(SpaceTruckerConstants.CargoKey);
+            if (!string.IsNullOrEmpty(currentCargo))
+            {
+                ShipLoadingController.LoadCargo(currentCargo);
+            }
+        }
+
+        public void GotoSpace()
+        {
+            var cargo = ShipLoadingController.SaveCargoToJson();
+            PlayerPrefs.SetString(SpaceTruckerConstants.CargoKey, cargo);
+            SceneManager.LoadScene(SpaceTruckerConstants.SpaceScene);
         }
     
         private void OnDestroy()
