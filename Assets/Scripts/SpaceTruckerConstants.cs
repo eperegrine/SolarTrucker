@@ -6,4 +6,5 @@
     public const string MoneyKey = "ACTIVE_MONEY";
     public const string TradingPostScene = "TradingPost";
     public const string SpaceScene = "Space";
+    public const string MissionDbKey = "MISSIONS";
 }
