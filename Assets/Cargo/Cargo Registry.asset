@@ -13,12 +13,5 @@ MonoBehaviour:
   m_Name: Cargo Registry
   m_EditorClassIdentifier: 
   CargoOptions:
-  - {fileID: 11400000, guid: 2145da368dfda224090cfc2061cc3b84, type: 2}
-  - {fileID: 11400000, guid: 8672f53337fda5843b7ac34467df899f, type: 2}
-  - {fileID: 11400000, guid: a611e4cf16606ab45a2bed19cb61d313, type: 2}
-  - {fileID: 11400000, guid: 9d24d80af33d6704ab4a32d362f8842b, type: 2}
-  - {fileID: 11400000, guid: 983b212cd07b4fa469a4a3ea75dd55f9, type: 2}
-  - {fileID: 11400000, guid: 96799e0dc10bab443af79ebe70dbb7a1, type: 2}
-  - {fileID: 11400000, guid: a9c867f5c068fed45a5e1fcfb9c5dd01, type: 2}
   - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
   - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}

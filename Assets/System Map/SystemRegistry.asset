@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TradingPosts:
   - {fileID: 11400000, guid: 9b4d8b8b8f989df4d800ba4553af380e, type: 2}
+  - {fileID: 11400000, guid: 1240782fb5e5ba64e97e09d731969380, type: 2}

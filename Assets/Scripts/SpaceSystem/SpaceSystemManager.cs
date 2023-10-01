@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Linq;
+using CargoManagement;
 using SystemMap;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace SpaceSystem
 {
-    public class SpaceSystemManager : MonoBehaviour
+    public class SpaceSystemManager : MonoBehaviour, ICargoRegistryLoader
     {
         private static SpaceSystemManager _instance;
         public static SpaceSystemManager Instance
@@ -24,6 +25,7 @@ namespace SpaceSystem
 
         public TargetController _TargetController;
         public SystemRegistry SystemRegistry;
+        public CargoRegistry CargoRegistry;
         public GameObject Player;
         private void Start()
         {
@@ -70,6 +72,11 @@ namespace SpaceSystem
         private void OnDestroy()
         {
             if (this == _instance) _instance = null;
+        }
+
+        public CargoRegistry GetCargoRegistry()
+        {
+            return CargoRegistry;
         }
     }
 }

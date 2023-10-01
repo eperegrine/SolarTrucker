@@ -1,5 +1,7 @@
-﻿using System.Linq;
+﻿using System.Collections.Generic;
+using System.Linq;
 using ItemDatabase;
+using JetBrains.Annotations;
 using UnityEngine;
 
 public static class MissionManager
@@ -28,6 +30,7 @@ public static class MissionManager
         return res;
     }
 
+    [CanBeNull]
     public static MissionProgress GetActiveMission()
     {
         var db = LoadDb();
@@ -38,7 +41,7 @@ public static class MissionManager
     public static void SetActiveMission(string id)
     {
         var db = LoadDb();
-        var exists = db.ActiveMissions.Any(x => x.Id == id);
+        var exists = db.CurrentMissions.Any(x => x.Id == id);
         if (exists)
         {
             db.ActiveMissionId = id;

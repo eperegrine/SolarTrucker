@@ -5,6 +5,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Utils;
 
 namespace TradingPost.UI
 {
@@ -17,11 +18,7 @@ namespace TradingPost.UI
         
         private void Start()
         {
-            //Kill all children
-            foreach (Transform child in ButtonGrid.transform)
-            {
-                Destroy(child.gameObject);
-            }
+            ButtonGrid.transform.DestroyChildren();
 
             var inv = TradingPostGameManager.Instance.TradingPostInfo.Selling;
             buttons = new List<BuyButton>(inv.Count);

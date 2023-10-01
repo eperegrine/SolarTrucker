@@ -19,6 +19,8 @@ namespace TradingPost
         private InputAction Confirm;
         private InputAction DropItem;
         private InputAction BuyMenu;
+        private InputAction MissionBoard;
+
     
         //Component
         public float MoveSpeed = 5f;
@@ -31,13 +33,13 @@ namespace TradingPost
         private MovableCargo _target;
         public GameObject CanSellInstruction;
         public GameObject BuyMenuPanel;
+        public GameObject MissionBoardPanel;
 
         public List<Collider2D> NewItemSlots;
 
         private int _index = 0;
         private List<MovableCargo> _MovableObjects;
-
-    
+        
         void Start()
         {
             var ActionMap = ActionAsset.FindActionMap("LoadShip");
@@ -48,11 +50,12 @@ namespace TradingPost
             Confirm = ActionMap.FindAction("Confirm");
             DropItem = ActionMap.FindAction("DropItem");
             BuyMenu = ActionMap.FindAction("BuyMenu");
+            MissionBoard = ActionMap.FindAction("MissionBoard");
             _MovableObjects = FindObjectsOfType<MovableCargo>().ToList();
             PickTarget();
             BuyMenuPanel.SetActive(false);
         }
-
+        
         public void PickTarget()
         {
             if (_MovableObjects.Any())
@@ -95,7 +98,11 @@ namespace TradingPost
             if (BuyMenu.triggered)
             {
                 BuyMenuPanel.SetActive(!BuyMenuPanel.activeSelf);
-                // Time.timeScale = BuyMenuPanel.activeSelf ? 0 : 1;
+            }
+            
+            if (MissionBoard.triggered)
+            {
+                MissionBoardPanel.SetActive(!MissionBoardPanel.activeSelf);
             }
             
             #if UNITY_EDITOR

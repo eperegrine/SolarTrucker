@@ -1,4 +1,7 @@
-﻿using CargoManagement;
+﻿using System.Collections.Generic;
+using System.Linq;
+using CargoManagement;
+using ItemDatabase;
 using SystemMap;
 using TMPro;
 using UnityEngine;
@@ -7,7 +10,7 @@ using UnityEngine.UI;
 
 namespace TradingPost
 {
-    public class TradingPostGameManager : MonoBehaviour
+    public class TradingPostGameManager : MonoBehaviour, ICargoRegistryLoader
     {
         private static TradingPostGameManager _instance;
         public static TradingPostGameManager Instance
@@ -33,6 +36,8 @@ namespace TradingPost
         public TextMeshProUGUI MoneyLabel;
         public TextMeshProUGUI BuyPanelMoneyLabel;
 
+        public List<Mission> AvailableMissions = new List<Mission>(3);
+
         private void Start()
         {
             var currentPost = PlayerPrefs.GetString(SpaceTruckerConstants.TradingPostKey);
@@ -47,6 +52,12 @@ namespace TradingPost
             if (!string.IsNullOrEmpty(currentCargo))
             {
                 ShipLoadingController.LoadCargo(currentCargo);
+            }
+
+            for (var i = 0; i < 3; i++)
+            {
+                var otherPosts = SystemRegistry.TradingPosts.Where(x => x.Id != TradingPostInfo.Id).ToArray();
+                AvailableMissions.Add(MissionBuilder.Generate(CargoRegistry, otherPosts));
             }
             
             UpdateMoneyLabel();
@@ -88,6 +99,11 @@ namespace TradingPost
             MoneyManager.AddCredits(-buying.BuyValue);
             ShipLoadingController.SpawnBoughtCargo(buying);
             UpdateMoneyLabel();
+        }
+
+        public CargoRegistry GetCargoRegistry()
+        {
+            return CargoRegistry;
         }
     }
 }

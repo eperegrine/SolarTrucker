@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CargoManagement;
+using JetBrains.Annotations;
 using Newtonsoft.Json;
 
 namespace ItemDatabase
@@ -16,7 +17,7 @@ namespace ItemDatabase
     
     public class MissionDatabase
     {
-        public List<MissionProgress> ActiveMissions { get; set; }
+        public List<MissionProgress> CurrentMissions { get; set; } = new();
         public string ActiveMissionId { get; set; }
 
         public string AddMission(Mission newMission)
@@ -28,25 +29,26 @@ namespace ItemDatabase
                 Info = newMission,
                 ItemsDelivered = 0
             };
-            ActiveMissions.Add(progress);
+            CurrentMissions.Add(progress);
             return id;
         }
 
+        [CanBeNull]
         public MissionProgress GetActiveMission()
         {
-            return string.IsNullOrWhiteSpace(ActiveMissionId) ? null : ActiveMissions.First(x => x.Id == ActiveMissionId);
+            return string.IsNullOrWhiteSpace(ActiveMissionId) ? null : CurrentMissions.First(x => x.Id == ActiveMissionId);
         }
 
         public bool ProgressMission(string id, int amt)
         {
-            var mission = ActiveMissions.First(x => x.Id == id);
+            var mission = CurrentMissions.First(x => x.Id == id);
             if (mission == null) return false;
             mission.ItemsDelivered += amt;
 
             var complete = mission.ItemsDelivered >= mission.Info.Quantity;
             if (complete)
             {
-                ActiveMissions.Remove(mission);
+                CurrentMissions.Remove(mission);
             }
 
             return complete;

@@ -30,14 +30,15 @@ namespace ItemDatabase
             var postIndex = intRand.Next(possiblePosts.Length);
             var tp = possiblePosts[postIndex];
             
-            var qty = intRand.Next(1, 3); 
+            var qty = intRand.Next(1, 3);
+            var reward = (int)(item.Info.BuyValue * qty * Random.Range(MinRewardMult, MaxRewardMult));
             return new Mission()
             {
-                Title = $"[{tp.Name}] Need {qty} {item.Info.Name}",
-                Description = "TODO: WRITE DESCRIPTIONS",
+                Title = $"Source & Deliver {item.Info.Name}",
+                Description = $"[{tp.Name}] Need {qty} {item.Info.Name}, Reward {reward}",
                 Quantity = qty,
                 RequestingItemId = item.Info.Id,
-                Reward = (int)(item.Info.BuyValue * qty * Random.Range(MinRewardMult, MaxRewardMult)),
+                Reward = reward,
                 TradingPostId = tp.Id
             };
         }

@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 23f0a5255ff847b587734d58f058ac21, type: 3}
   m_Name: TradingPost Beta
   m_EditorClassIdentifier: 
-  Id: A
-  Name: Trading Post Alpha
-  Description: The OG of trading posts
+  Id: B
+  Name: Trading Post Beta
+  Description: A new trading post
   Selling:
   - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
-  - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}
