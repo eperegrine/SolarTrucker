@@ -3,6 +3,7 @@ using System.Linq;
 using CargoManagement;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace TradingPost
 {
@@ -15,14 +16,19 @@ namespace TradingPost
         private InputAction Move;
         private InputAction Rotate;
         private InputAction Confirm;
+        private InputAction DropItem;
     
         //Component
         public float MoveSpeed = 5f;
         public float RotationSpeed = 180f;
+        public Collider2D SellArea;
+        public Collider2D DeliverArea;
         public Collider2D LoadingArea;
-        public ContactFilter2D LoadingContactFilter;
+        [FormerlySerializedAs("LoadingContactFilter")] 
+        public ContactFilter2D cargoContactFilter2D;
         public List<MovableCargo> _MovableObjects;
         private MovableCargo _target;
+        public GameObject CanSellInstruction;
 
         private int _index = 0;
     
@@ -34,11 +40,20 @@ namespace TradingPost
             Move = ActionMap.FindAction("Movement");
             Rotate = ActionMap.FindAction("Rotate");
             Confirm = ActionMap.FindAction("Confirm");
+            DropItem = ActionMap.FindAction("DropItem");
             _MovableObjects = FindObjectsOfType<MovableCargo>().ToList();
-            SelectMovable(_MovableObjects.First());
+            PickTarget();
         
         }
 
+        public void PickTarget()
+        {
+            if (_MovableObjects.Any())
+            {
+                SelectMovable(_MovableObjects.First());
+            }
+        }
+        
         public void SelectMovable(MovableCargo movableCargo)
         {
             if (_target != null) _target.Deselected();
@@ -65,6 +80,12 @@ namespace TradingPost
                 TradingPostGameManager.Instance.GotoSpace();
             }
 
+            if (canSell && DropItem.triggered)
+            {
+                SellTarget();
+            }
+            
+            #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
                 //Save
@@ -91,11 +112,21 @@ namespace TradingPost
             {
                 LoadCargo(saved);
             }
+            #endif
         
         }
-    
-        List<Collider2D> inLoadingArea = new List<Collider2D>();
 
+        private void SellTarget()
+        {
+            TradingPostGameManager.Instance.SellCargo(_target.CargoInfo);
+            _MovableObjects.Remove(_target);
+            Destroy(_target.gameObject);
+            PickTarget();
+        }
+
+        List<MovableCargo> inLoadingArea = new List<MovableCargo>();
+        private bool canSell = false;
+        
         void FixedUpdate()
         {
             if (_target)
@@ -107,11 +138,26 @@ namespace TradingPost
                 _target.Rigidbody.MovePosition((Vector2)_target.transform.position + delta);
                 var rotDelta = -rotation * RotationSpeed * Time.fixedDeltaTime;
                 _target.Rigidbody.MoveRotation(_target.transform.rotation.eulerAngles.z + rotDelta);
+                
+                canSell = _target.InArea(SellArea);
+                Debug.Log(canSell);
+                CanSellInstruction.SetActive(canSell);
             }
-        
-            var count = LoadingArea.OverlapCollider(LoadingContactFilter, inLoadingArea);
+
+            var count = 0;
+            inLoadingArea = new List<MovableCargo>(_MovableObjects.Count);
+            for (var i = 0; i < _MovableObjects.Count; i++)
+            {
+                var currentCargo = _MovableObjects[i];
+                var loaded = currentCargo.InArea(LoadingArea);
+                currentCargo.SetInLoadingArea(loaded);
+                if (!loaded) continue;
+                count++;
+                inLoadingArea.Add(currentCargo);
+            }
+            
+            // var count = LoadingArea.OverlapCollider(cargoContactFilter2D, inLoadingArea);
             Debug.Log(count);
-        
         }
 
         public void LoadCargo(string currentCargo)
@@ -128,11 +174,8 @@ namespace TradingPost
         public string SaveCargoToJson()
         {
             var load = new CargoLoad();
-            var loadedCargo = inLoadingArea
-                .Select(loadedCollider => loadedCollider.GetComponent<MovableCargo>())
-                .Where(cargo => cargo != null).ToList();
             //TODO: add storage relative point
-            load.LoadFromMovableCargo(transform.position, loadedCargo);
+            load.LoadFromMovableCargo(transform.position, inLoadingArea);
             return load.SaveToString();
         }
     }

@@ -1,7 +1,9 @@
 ﻿using CargoManagement;
 using SystemMap;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 namespace TradingPost
 {
@@ -26,6 +28,8 @@ namespace TradingPost
         public CargoRegistry CargoRegistry;
         public SystemRegistry SystemRegistry;
 
+        public TextMeshProUGUI MoneyLabel;
+
         private void Start()
         {
             var currentPost = PlayerPrefs.GetString(SpaceTruckerConstants.TradingPostKey);
@@ -41,8 +45,27 @@ namespace TradingPost
             {
                 ShipLoadingController.LoadCargo(currentCargo);
             }
+            
+            UpdateMoneyLabel();
         }
 
+        public void UpdateMoneyLabel()
+        {
+            var credits = MoneyManager.GetCredits();
+            MoneyLabel.text = $"Credits: {credits:0000}";
+        }
+
+        /// <summary>
+        /// Handle the financial/mission aspect of selling
+        /// The calling class handles deleting the cargo
+        /// </summary>
+        public void SellCargo(CargoObject cargo)
+        {
+            var amt = cargo.Info.CreditValue;
+            MoneyManager.AddCredits(amt);
+            UpdateMoneyLabel();
+        }
+        
         public void GotoSpace()
         {
             var cargo = ShipLoadingController.SaveCargoToJson();
