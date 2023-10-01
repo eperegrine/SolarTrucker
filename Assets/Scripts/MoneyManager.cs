@@ -4,7 +4,7 @@ public static class MoneyManager
 {
     public static int GetCredits()
     {
-        return PlayerPrefs.GetInt(SpaceTruckerConstants.MoneyKey, 0);
+        return PlayerPrefs.GetInt(SpaceTruckerConstants.MoneyKey, 200);
     }
 
     public static void AddCredits(int amt)

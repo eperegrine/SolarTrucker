@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 namespace SpaceSystem
 {
@@ -46,6 +47,8 @@ namespace SpaceSystem
                 var docker = DetectedDock.GetComponent<DockingPoint>();
                 docker.Dock();
             }
+            
+            if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("MainMenu");
         }
 
         private GameObject DetectedDock;

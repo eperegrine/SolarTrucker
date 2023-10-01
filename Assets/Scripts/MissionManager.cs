@@ -31,6 +31,7 @@ public static class MissionManager
     {
         var db = LoadDb();
         var res = db.AddMission(newMission);
+        SetTargetTp(newMission.TradingPostId);
         SaveDb(db);
         return res;
     }

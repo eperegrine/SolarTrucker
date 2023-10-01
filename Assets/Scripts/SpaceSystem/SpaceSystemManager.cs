@@ -45,13 +45,19 @@ namespace SpaceSystem
         public void SetTarget()
         {
             var targetId = PlayerPrefs.GetString(SpaceTruckerConstants.TargetTradingPost);
+            Debug.Log(targetId);
             if (!string.IsNullOrWhiteSpace(targetId))
             {
+                _TargetController.gameObject.SetActive(true);
                 var target = GetTradingPost(targetId);
                 if (target != null)
                 {
                     _TargetController.Target = target.gameObject;
                 }
+            }
+            else
+            {
+                _TargetController.gameObject.SetActive(false);
             }
         }
 

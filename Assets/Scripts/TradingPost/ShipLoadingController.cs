@@ -6,6 +6,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.Serialization;
 
 namespace TradingPost
@@ -92,6 +93,8 @@ namespace TradingPost
         
         private void Update()
         {
+            if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("MainMenu");
+            
             if (InfoText.gameObject.activeSelf &&  Time.time - infoSetAtTime > 2f)
             {
                 InfoText.gameObject.SetActive(false);
@@ -230,10 +233,14 @@ namespace TradingPost
                 
                 canSell = _target.InArea(SellArea);
                 canDeliver = deliverable && _target.InArea(DeliverArea);
-                
-                CanSellInstruction.SetActive(canSell);
-                CanDeliverInstruction.SetActive(canDeliver);
             }
+            else
+            {
+                canSell = false;
+                canDeliver = false;
+            }
+            CanSellInstruction.SetActive(canSell);
+            CanDeliverInstruction.SetActive(canDeliver);
 
             var count = 0;
             inLoadingArea = new List<MovableCargo>(_MovableObjects.Count);
