@@ -858,6 +858,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "MissionBoard",
+                    "type": "Button",
+                    "id": "f384c9e6-e377-4246-9738-ffe858e0bb3c",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1012,6 +1021,28 @@
                     "processors": "",
                     "groups": "DefaultScheme",
                     "action": "Dock",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1e78221b-8f9b-43e6-bd9d-c0a2403ff09a",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "DefaultScheme",
+                    "action": "MissionBoard",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "43376437-a6be-4757-86b0-58d041b5c66f",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "DefaultScheme",
+                    "action": "MissionBoard",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
