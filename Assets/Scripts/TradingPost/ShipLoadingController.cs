@@ -194,7 +194,9 @@ namespace TradingPost
 
         private bool IsTargetDeliverable(MissionProgress activeMission)
         {
-            return activeMission != null && activeMission.Info.RequestingItemId == _target.CargoInfo.Info.Id;
+            return activeMission != null && 
+                   activeMission.Info.TradingPostId == TradingPostGameManager.Instance.TradingPostInfo.Id && 
+                   activeMission.Info.RequestingItemId == _target.CargoInfo.Info.Id;
         }
 
         private void SellTarget()

@@ -17,6 +17,11 @@ public static class MissionManager
         return new MissionDatabase();
     }
 
+    public static void SetTargetTp(string tpId)
+    {
+        PlayerPrefs.SetString(SpaceTruckerConstants.TargetTradingPost, tpId);
+    }
+
     public static void SaveDb(MissionDatabase db)
     {
         PlayerPrefs.SetString(SpaceTruckerConstants.MissionDbKey, db.SaveToString());
@@ -46,6 +51,8 @@ public static class MissionManager
         {
             db.ActiveMissionId = id;
             SaveDb(db);
+            var mission = GetActiveMission();
+            SetTargetTp(mission.Info.TradingPostId);
         }
         else
         {
