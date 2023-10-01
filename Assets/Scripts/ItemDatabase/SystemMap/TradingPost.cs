@@ -11,5 +11,6 @@ namespace SystemMap
         public string Description;
 
         public List<CargoObject> Selling;
+        public List<CargoObject> Buying;
     }
 }

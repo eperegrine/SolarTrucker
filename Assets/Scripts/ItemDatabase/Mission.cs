@@ -23,12 +23,12 @@ namespace ItemDatabase
         public static Mission Generate(CargoRegistry allItems, SystemMap.TradingPost[] possiblePosts)
         {
             var intRand = new System.Random();
-            
-            var cargoIndex = intRand.Next(allItems.CargoOptions.Count);
-            var item = allItems.CargoOptions[cargoIndex];
-            
+
             var postIndex = intRand.Next(possiblePosts.Length);
             var tp = possiblePosts[postIndex];
+            
+            var cargoIndex = intRand.Next(tp.Buying.Count);
+            var item =tp.Buying[cargoIndex];
             
             var qty = intRand.Next(1, 3);
             var reward = (int)(item.Info.BuyValue * qty * Random.Range(MinRewardMult, MaxRewardMult));

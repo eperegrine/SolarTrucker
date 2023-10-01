@@ -10,10 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f0a5255ff847b587734d58f058ac21, type: 3}
-  m_Name: TradingPost Alpha
+  m_Name: Grocery TP
   m_EditorClassIdentifier: 
-  Id: A
-  Name: Trading Post Alpha
-  Description: The OG of trading posts
+  Id: B
+  Name: TP - Grocery
+  Description: A grocery trading post
   Selling:
-  - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}
+  - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
+  - {fileID: 11400000, guid: e092a104a2286264aae7984397631f0c, type: 2}
+  Buying:
+  - {fileID: 11400000, guid: 4506836d9cab8ba449053c817bcaf5aa, type: 2}
+  - {fileID: 11400000, guid: 1caf44fc01517a84e9cb0a7279607e55, type: 2}

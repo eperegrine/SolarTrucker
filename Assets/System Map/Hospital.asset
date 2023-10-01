@@ -10,10 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 23f0a5255ff847b587734d58f058ac21, type: 3}
-  m_Name: TradingPost Beta
+  m_Name: Hospital
   m_EditorClassIdentifier: 
-  Id: B
-  Name: Trading Post Beta
-  Description: A new trading post
+  Id: C
+  Name: TP - Hospital
+  Description: A Hospital
   Selling:
+  - {fileID: 11400000, guid: 4506836d9cab8ba449053c817bcaf5aa, type: 2}
+  - {fileID: 11400000, guid: 854b9598190485e49b6f9fe8c959b9c9, type: 2}
+  Buying:
   - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
+  - {fileID: 11400000, guid: 1caf44fc01517a84e9cb0a7279607e55, type: 2}
+  - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}

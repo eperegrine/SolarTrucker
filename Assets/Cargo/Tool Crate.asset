@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1223c39e3b2b44b7bda372ce9a9f7383, type: 3}
-  m_Name: FoodCrate
+  m_Name: Tool Crate
   m_EditorClassIdentifier: 
   Info:
-    Id: FOOD_CRATE
-    Name: Food
+    Id: TOOL_CRATE
+    Name: Tools
     BuyValue: 50
     SellValue: 50
-  Prefab: {fileID: 3213677793019083533, guid: ae7b791f1d691764a9d20d9a40b191a1, type: 3}
-  Icon: {fileID: 21300000, guid: ecb041d1de4c4724b991011ab395004f, type: 3}
+  Prefab: {fileID: 3213677793019083533, guid: 335dfe1b914526b40b03891fe3ce2b92, type: 3}
+  Icon: {fileID: -6989364601258259709, guid: 08978e54d61aaee4fac914930c4b3445, type: 3}
