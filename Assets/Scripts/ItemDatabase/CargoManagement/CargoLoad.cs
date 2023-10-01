@@ -52,10 +52,10 @@ namespace CargoManagement
             foreach (var cargoLoadItem in Items)
             {
                 var cargoObj = registry.FindCargoById(cargoLoadItem.CargoId);
-                var obj = Object.Instantiate(cargoObj.Prefab);
-                var rb =obj.GetComponent<Rigidbody2D>();
-                obj.transform.position = core + cargoLoadItem.RelativePosition;
-                rb.MoveRotation(cargoLoadItem.Rotation);
+                var obj = Object.Instantiate(
+                    cargoObj.Prefab, 
+                    core + cargoLoadItem.RelativePosition,
+                    Quaternion.Euler(0,0,cargoLoadItem.Rotation));
                 newCargo.Add(obj.GetComponent<MovableCargo>());
             }
 
