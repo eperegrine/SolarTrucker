@@ -30,7 +30,7 @@ namespace ItemDatabase
             var postIndex = intRand.Next(possiblePosts.Length);
             var tp = possiblePosts[postIndex];
             
-            var qty = intRand.Next(1, 2); //TODO: Support more than 1 item
+            var qty = intRand.Next(1, 3); 
             return new Mission()
             {
                 Title = $"[{tp.Name}] Need {qty} {item.Info.Name}",

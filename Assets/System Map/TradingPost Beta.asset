@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23f0a5255ff847b587734d58f058ac21, type: 3}
+  m_Name: TradingPost Beta
+  m_EditorClassIdentifier: 
+  Id: A
+  Name: Trading Post Alpha
+  Description: The OG of trading posts
+  Selling:
+  - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
+  - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}

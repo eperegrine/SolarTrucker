@@ -39,7 +39,7 @@ namespace TradingPost
             if (!string.IsNullOrEmpty(currentPost))
             {
                 var info = SystemRegistry.FindTradingPost(currentPost);
-
+                TradingPostInfo = info;
                 Debug.Log($"At Trading Post: {info.name}\n{info.Description}");
             }
 
