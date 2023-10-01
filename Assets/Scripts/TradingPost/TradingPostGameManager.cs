@@ -24,11 +24,14 @@ namespace TradingPost
         }
 
         public ShipLoadingController ShipLoadingController;
+
+        public SystemMap.TradingPost TradingPostInfo;
         
         public CargoRegistry CargoRegistry;
         public SystemRegistry SystemRegistry;
 
         public TextMeshProUGUI MoneyLabel;
+        public TextMeshProUGUI BuyPanelMoneyLabel;
 
         private void Start()
         {
@@ -52,7 +55,9 @@ namespace TradingPost
         public void UpdateMoneyLabel()
         {
             var credits = MoneyManager.GetCredits();
-            MoneyLabel.text = $"Credits: {credits:0000}";
+            var text = $"Credits: {credits:0000}";
+            MoneyLabel.text = text;
+            BuyPanelMoneyLabel.text = text;
         }
 
         /// <summary>
@@ -61,7 +66,7 @@ namespace TradingPost
         /// </summary>
         public void SellCargo(CargoObject cargo)
         {
-            var amt = cargo.Info.CreditValue;
+            var amt = cargo.Info.SellValue;
             MoneyManager.AddCredits(amt);
             UpdateMoneyLabel();
         }
@@ -76,6 +81,13 @@ namespace TradingPost
         private void OnDestroy()
         {
             if (this == _instance) _instance = null;
+        }
+
+        public void Buy(CargoInfo buying)
+        {
+            MoneyManager.AddCredits(-buying.BuyValue);
+            ShipLoadingController.SpawnBoughtCargo(buying);
+            UpdateMoneyLabel();
         }
     }
 }

@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: FrameCrate
   m_EditorClassIdentifier: 
   Info:
-    Id: 
-    CreditValue: 0
+    Id: FRAME_CRATE
+    Name: Frames
+    BuyValue: 100
+    SellValue: 150
   Prefab: {fileID: 7046274022699120895, guid: 63f7085e49ee93f4f89cd14719ef6a71, type: 3}
+  Icon: {fileID: -7537696716094793115, guid: e5f6ee31528648b4898445ade0660e8e, type: 3}

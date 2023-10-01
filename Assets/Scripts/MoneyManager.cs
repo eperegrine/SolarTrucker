@@ -13,4 +13,9 @@ public static class MoneyManager
         current += amt;
         PlayerPrefs.SetInt(SpaceTruckerConstants.MoneyKey, current);
     }
+
+    public static bool HasCredits(int amt)
+    {
+        return GetCredits() >= amt;
+    }
 }

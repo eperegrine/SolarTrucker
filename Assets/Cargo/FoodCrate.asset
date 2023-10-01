@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: FoodCrate
   m_EditorClassIdentifier: 
   Info:
-    Id: FoodCrate
-    CreditValue: 100
+    Id: FOOD_CRATE
+    Name: Food
+    BuyValue: 50
+    SellValue: 70
   Prefab: {fileID: 3213677793019083533, guid: ae7b791f1d691764a9d20d9a40b191a1, type: 3}
+  Icon: {fileID: 21300000, guid: ecb041d1de4c4724b991011ab395004f, type: 3}

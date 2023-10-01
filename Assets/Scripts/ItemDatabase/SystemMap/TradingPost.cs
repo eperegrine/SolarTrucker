@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace SystemMap
 {
@@ -8,5 +9,7 @@ namespace SystemMap
         public string Id;
         public string Name;
         public string Description;
+
+        public List<CargoObject> Selling;
     }
 }

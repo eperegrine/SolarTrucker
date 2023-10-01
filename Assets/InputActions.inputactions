@@ -42,7 +42,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "OpenBuyMenu",
+                    "name": "BuyMenu",
                     "type": "Button",
                     "id": "b34b8815-bd33-48c4-b4e4-ab5950b53a0e",
                     "expectedControlType": "Button",
@@ -54,6 +54,15 @@
                     "name": "DropItem",
                     "type": "Button",
                     "id": "1d268f5f-8172-408f-a75f-7d99ca706b3e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "MissionMenu",
+                    "type": "Button",
+                    "id": "5cf17fc4-d3ec-44b6-a977-b09395635389",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -233,18 +242,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "DefaultScheme",
-                    "action": "OpenBuyMenu",
+                    "action": "BuyMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "803e206c-cb5e-4213-9efb-ad1ca27274d5",
-                    "path": "<Gamepad>/select",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "DefaultScheme",
-                    "action": "OpenBuyMenu",
+                    "action": "BuyMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -267,6 +276,28 @@
                     "processors": "",
                     "groups": "DefaultScheme",
                     "action": "DropItem",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4ac43e09-0233-4379-970b-3669316ce4b6",
+                    "path": "<Gamepad>/buttonNorth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "DefaultScheme",
+                    "action": "MissionMenu",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "3d5cb098-ee2b-4d63-8eb5-689ba8a46d87",
+                    "path": "<Keyboard>/m",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "DefaultScheme",
+                    "action": "MissionMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

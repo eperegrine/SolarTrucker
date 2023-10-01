@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CargoManagement;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.Serialization;
@@ -17,6 +18,7 @@ namespace TradingPost
         private InputAction Rotate;
         private InputAction Confirm;
         private InputAction DropItem;
+        private InputAction BuyMenu;
     
         //Component
         public float MoveSpeed = 5f;
@@ -26,11 +28,15 @@ namespace TradingPost
         public Collider2D LoadingArea;
         [FormerlySerializedAs("LoadingContactFilter")] 
         public ContactFilter2D cargoContactFilter2D;
-        public List<MovableCargo> _MovableObjects;
         private MovableCargo _target;
         public GameObject CanSellInstruction;
+        public GameObject BuyMenuPanel;
+
+        public List<Collider2D> NewItemSlots;
 
         private int _index = 0;
+        private List<MovableCargo> _MovableObjects;
+
     
         void Start()
         {
@@ -41,9 +47,10 @@ namespace TradingPost
             Rotate = ActionMap.FindAction("Rotate");
             Confirm = ActionMap.FindAction("Confirm");
             DropItem = ActionMap.FindAction("DropItem");
+            BuyMenu = ActionMap.FindAction("BuyMenu");
             _MovableObjects = FindObjectsOfType<MovableCargo>().ToList();
             PickTarget();
-        
+            BuyMenuPanel.SetActive(false);
         }
 
         public void PickTarget()
@@ -84,6 +91,12 @@ namespace TradingPost
             {
                 SellTarget();
             }
+
+            if (BuyMenu.triggered)
+            {
+                BuyMenuPanel.SetActive(!BuyMenuPanel.activeSelf);
+                // Time.timeScale = BuyMenuPanel.activeSelf ? 0 : 1;
+            }
             
             #if UNITY_EDITOR
             if (Input.GetKeyDown(KeyCode.Alpha1))
@@ -98,6 +111,12 @@ namespace TradingPost
                 load.LoadFromMovableCargo(transform.position, loadedCargo);
                 saved = load.SaveToString();
                 Debug.Log(saved);
+            }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
+                MoneyManager.AddCredits(1000);
+                TradingPostGameManager.Instance.UpdateMoneyLabel();
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha5))
@@ -158,6 +177,7 @@ namespace TradingPost
             
             // var count = LoadingArea.OverlapCollider(cargoContactFilter2D, inLoadingArea);
             Debug.Log(count);
+            UpdateAvailableNewSlots();
         }
 
         public void LoadCargo(string currentCargo)
@@ -177,6 +197,38 @@ namespace TradingPost
             //TODO: add storage relative point
             load.LoadFromMovableCargo(transform.position, inLoadingArea);
             return load.SaveToString();
+        }
+
+        [HideInInspector]
+        public List<Vector3> availableBuySlots;
+
+        public void UpdateAvailableNewSlots()
+        {
+            availableBuySlots = NewItemSlots
+                .Where(c =>
+                {
+                    var colls = new List<Collider2D>();
+                    var amt = c.OverlapCollider(cargoContactFilter2D, colls);
+                    if (amt > 0) Debug.Log(colls);
+                    return amt == 0;
+                })
+                .Select(c => c.transform.position)
+                .ToList();
+            Debug.Log($"Slots: {availableBuySlots.Count}");
+        }
+
+        public void SpawnBoughtCargo(CargoInfo newCargo)
+        {
+            if (availableBuySlots.Any())
+            {
+                var slot = availableBuySlots.First();
+                var obj = TradingPostGameManager.Instance.CargoRegistry.FindCargoById(newCargo.Id);
+                var go = Instantiate(obj.Prefab, slot, Quaternion.identity);
+                var mc = go.GetComponent<MovableCargo>();
+                mc.playerOwned = true;
+                _MovableObjects.Add(mc);
+                SelectMovable(mc);
+            }
         }
     }
 }

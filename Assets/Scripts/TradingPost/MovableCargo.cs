@@ -20,6 +20,7 @@ namespace TradingPost
         private Collider2D thisCollider;
         private bool inLoadingArea;
         private bool selected;
+        public bool playerOwned = true;
         
         private void Awake()
         {

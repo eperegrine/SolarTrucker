@@ -13,6 +13,7 @@ namespace CargoManagement
         public SerializableVector RelativePosition { get; set; }
         public float Rotation { get; set; }
         public string CargoId { get; set; }
+        public bool PlayerOwned { get; set; } = true;
     }
 
     [Serializable]
@@ -29,7 +30,8 @@ namespace CargoManagement
                 {
                     RelativePosition = (SerializableVector)transform.position - storagePos,
                     Rotation = transform.rotation.eulerAngles.z,
-                    CargoId = movableCargo.CargoInfo.Info.Id
+                    CargoId = movableCargo.CargoInfo.Info.Id,
+                    PlayerOwned = movableCargo.playerOwned
                 });
             }
         } 
@@ -56,7 +58,9 @@ namespace CargoManagement
                     cargoObj.Prefab, 
                     core + cargoLoadItem.RelativePosition,
                     Quaternion.Euler(0,0,cargoLoadItem.Rotation));
-                newCargo.Add(obj.GetComponent<MovableCargo>());
+                var mc = obj.GetComponent<MovableCargo>();
+                mc.playerOwned = cargoLoadItem.PlayerOwned;
+                newCargo.Add(mc);
             }
 
             return newCargo;
