@@ -2,6 +2,7 @@
 using System.Linq;
 using CargoManagement;
 using ItemDatabase;
+using Missions;
 using SystemMap;
 using TMPro;
 using UnityEngine;
@@ -35,6 +36,8 @@ namespace TradingPost
 
         public TextMeshProUGUI MoneyLabel;
         public TextMeshProUGUI StationNameLabel;
+
+        public MissionPanelManager MissionPanelManager;
 
         public List<Mission> AvailableMissions = new List<Mission>(3);
 

@@ -18,7 +18,13 @@ namespace Missions
             UpdateUI();
         }
 
-        private void UpdateUI()
+        public void MissionUpdates()
+        {
+            UpdateUI();
+            TradingPostGameManager.Instance.ShipLoadingController.NotifyMissionChange();
+        }
+
+        public void UpdateUI()
         {
             AvailableMissions.DestroyChildren();
             CurrentMissions.DestroyChildren();
@@ -30,7 +36,7 @@ namespace Missions
             {
                 var go = Instantiate(CurrentPrefab, CurrentMissions);
                 var panel = go.GetComponent<CurrentMissionItemPanel>();
-                panel.SetMission(m, UpdateUI);
+                panel.SetMission(m, MissionUpdates);
             }
 
             var available = TradingPostGameManager.Instance.AvailableMissions;
@@ -38,7 +44,7 @@ namespace Missions
             {
                 var go = Instantiate(AvailablePrefab, AvailableMissions);
                 var panel = go.GetComponent<AvailableMissionItemPanel>();
-                panel.SetMission(m, UpdateUI);
+                panel.SetMission(m, MissionUpdates);
             }
         }
     }

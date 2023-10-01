@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CargoManagement;
 using ItemDatabase;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -35,6 +36,8 @@ namespace TradingPost
         public GameObject CanDeliverInstruction;
         public GameObject BuyMenuPanel;
         public GameObject MissionBoardPanel;
+        public TextMeshProUGUI InfoText;
+        public float infoSetAtTime;
 
         public List<Collider2D> NewItemSlots;
 
@@ -55,6 +58,14 @@ namespace TradingPost
             _MovableObjects = FindObjectsOfType<MovableCargo>().ToList();
             PickTarget();
             BuyMenuPanel.SetActive(false);
+            ShowMessage("Hi");
+        }
+
+        public void ShowMessage(string message)
+        {
+            InfoText.GameObject().SetActive(true);
+            InfoText.text = message;
+            infoSetAtTime = Time.time;
         }
         
         public void PickTarget()
@@ -70,8 +81,8 @@ namespace TradingPost
             if (_target != null) _target.Deselected();
             _target = movableCargo;
             _target.Selected();
+            
             var activeMission = MissionManager.GetActiveMission();
-
             deliverable = IsTargetDeliverable(activeMission);
         }
 
@@ -81,6 +92,11 @@ namespace TradingPost
         
         private void Update()
         {
+            if (InfoText.gameObject.activeSelf &&  Time.time - infoSetAtTime > 2f)
+            {
+                InfoText.gameObject.SetActive(false);
+            }
+            
             if (SwitchObject.triggered)
             {
                 if (_index >= _MovableObjects.Count-1)
@@ -113,6 +129,7 @@ namespace TradingPost
             
             if (MissionBoard.triggered)
             {
+                TradingPostGameManager.Instance.MissionPanelManager.UpdateUI();
                 MissionBoardPanel.SetActive(!MissionBoardPanel.activeSelf);
             }
             
@@ -169,6 +186,7 @@ namespace TradingPost
                     MoneyManager.AddCredits(activeMission.Info.Reward);
                     TradingPostGameManager.Instance.UpdateMoneyLabel();
                 }
+                ShowMessage(nowComplete ? "Mission Completed" : $"Delivery { activeMission.ItemsDelivered+1}/{activeMission.Info.Quantity} made");
                 DestroyTarget();
                 Debug.Log($"Completed? {nowComplete}");
             }
@@ -278,6 +296,12 @@ namespace TradingPost
                 _MovableObjects.Add(mc);
                 SelectMovable(mc);
             }
+        }
+
+        public void NotifyMissionChange()
+        {
+            var activeMission = MissionManager.GetActiveMission();
+            deliverable = IsTargetDeliverable(activeMission);
         }
     }
 }
