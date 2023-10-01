@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using CargoManagement;
+using ItemDatabase;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -20,8 +21,7 @@ namespace TradingPost
         private InputAction DropItem;
         private InputAction BuyMenu;
         private InputAction MissionBoard;
-
-    
+        
         //Component
         public float MoveSpeed = 5f;
         public float RotationSpeed = 180f;
@@ -32,6 +32,7 @@ namespace TradingPost
         public ContactFilter2D cargoContactFilter2D;
         private MovableCargo _target;
         public GameObject CanSellInstruction;
+        public GameObject CanDeliverInstruction;
         public GameObject BuyMenuPanel;
         public GameObject MissionBoardPanel;
 
@@ -69,10 +70,15 @@ namespace TradingPost
             if (_target != null) _target.Deselected();
             _target = movableCargo;
             _target.Selected();
+            var activeMission = MissionManager.GetActiveMission();
+
+            deliverable = IsTargetDeliverable(activeMission);
         }
 
         private string saved = "";
-    
+
+        private bool deliverable = false;
+        
         private void Update()
         {
             if (SwitchObject.triggered)
@@ -93,6 +99,11 @@ namespace TradingPost
             if (canSell && DropItem.triggered)
             {
                 SellTarget();
+            }
+
+            if (canDeliver && DropItem.triggered)
+            {
+                DeliverTarget();
             }
 
             if (BuyMenu.triggered)
@@ -125,6 +136,11 @@ namespace TradingPost
                 MoneyManager.AddCredits(1000);
                 TradingPostGameManager.Instance.UpdateMoneyLabel();
             }
+            
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
+                PlayerPrefs.DeleteAll();
+            }
 
             if (Input.GetKeyDown(KeyCode.Alpha5))
             {
@@ -142,9 +158,35 @@ namespace TradingPost
         
         }
 
+        private void DeliverTarget()
+        {
+            var activeMission = MissionManager.GetActiveMission();
+            if (IsTargetDeliverable(activeMission))
+            {
+                var nowComplete = MissionManager.ProgressMission(activeMission.Id, 1);
+                if (nowComplete)
+                {
+                    MoneyManager.AddCredits(activeMission.Info.Reward);
+                    TradingPostGameManager.Instance.UpdateMoneyLabel();
+                }
+                DestroyTarget();
+                Debug.Log($"Completed? {nowComplete}");
+            }
+        }
+
+        private bool IsTargetDeliverable(MissionProgress activeMission)
+        {
+            return activeMission != null && activeMission.Info.RequestingItemId == _target.CargoInfo.Info.Id;
+        }
+
         private void SellTarget()
         {
             TradingPostGameManager.Instance.SellCargo(_target.CargoInfo);
+            DestroyTarget();
+        }
+
+        private void DestroyTarget()
+        {
             _MovableObjects.Remove(_target);
             Destroy(_target.gameObject);
             PickTarget();
@@ -152,6 +194,7 @@ namespace TradingPost
 
         List<MovableCargo> inLoadingArea = new List<MovableCargo>();
         private bool canSell = false;
+        private bool canDeliver = false;
         
         void FixedUpdate()
         {
@@ -166,8 +209,10 @@ namespace TradingPost
                 _target.Rigidbody.MoveRotation(_target.transform.rotation.eulerAngles.z + rotDelta);
                 
                 canSell = _target.InArea(SellArea);
-                Debug.Log(canSell);
+                canDeliver = deliverable && _target.InArea(DeliverArea);
+                
                 CanSellInstruction.SetActive(canSell);
+                CanDeliverInstruction.SetActive(canDeliver);
             }
 
             var count = 0;
@@ -182,8 +227,6 @@ namespace TradingPost
                 inLoadingArea.Add(currentCargo);
             }
             
-            // var count = LoadingArea.OverlapCollider(cargoContactFilter2D, inLoadingArea);
-            Debug.Log(count);
             UpdateAvailableNewSlots();
         }
 
@@ -221,7 +264,6 @@ namespace TradingPost
                 })
                 .Select(c => c.transform.position)
                 .ToList();
-            Debug.Log($"Slots: {availableBuySlots.Count}");
         }
 
         public void SpawnBoughtCargo(CargoInfo newCargo)

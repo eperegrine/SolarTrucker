@@ -34,7 +34,7 @@ namespace TradingPost
         public SystemRegistry SystemRegistry;
 
         public TextMeshProUGUI MoneyLabel;
-        public TextMeshProUGUI BuyPanelMoneyLabel;
+        public TextMeshProUGUI StationNameLabel;
 
         public List<Mission> AvailableMissions = new List<Mission>(3);
 
@@ -45,6 +45,7 @@ namespace TradingPost
             {
                 var info = SystemRegistry.FindTradingPost(currentPost);
                 TradingPostInfo = info;
+                StationNameLabel.text = info.Name;
                 Debug.Log($"At Trading Post: {info.name}\n{info.Description}");
             }
 
@@ -68,7 +69,6 @@ namespace TradingPost
             var credits = MoneyManager.GetCredits();
             var text = $"Credits: {credits:0000}";
             MoneyLabel.text = text;
-            BuyPanelMoneyLabel.text = text;
         }
 
         /// <summary>
@@ -84,11 +84,16 @@ namespace TradingPost
         
         public void GotoSpace()
         {
-            var cargo = ShipLoadingController.SaveCargoToJson();
-            PlayerPrefs.SetString(SpaceTruckerConstants.CargoKey, cargo);
+            SaveCargo();
             SceneManager.LoadScene(SpaceTruckerConstants.SpaceScene);
         }
-    
+
+        private void SaveCargo()
+        {
+            var cargo = ShipLoadingController.SaveCargoToJson();
+            PlayerPrefs.SetString(SpaceTruckerConstants.CargoKey, cargo);
+        }
+
         private void OnDestroy()
         {
             if (this == _instance) _instance = null;

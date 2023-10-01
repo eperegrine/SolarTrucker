@@ -49,6 +49,10 @@ namespace ItemDatabase
             if (complete)
             {
                 CurrentMissions.Remove(mission);
+                if (mission.Id == ActiveMissionId)
+                {
+                    ActiveMissionId = CurrentMissions.Count > 0 ? CurrentMissions.First().Id : null;
+                }
             }
 
             return complete;

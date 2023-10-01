@@ -13,7 +13,7 @@ namespace Missions
         public GameObject AvailablePrefab;
         public GameObject CurrentPrefab;
 
-        private void Start()
+        private void Awake()
         {
             UpdateUI();
         }
