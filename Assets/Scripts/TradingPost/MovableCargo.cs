@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Linq;
+using UnityEngine;
 
 namespace TradingPost
 {
@@ -69,12 +71,43 @@ namespace TradingPost
 
         public bool InArea(Collider2D targetCollider2D)
         {
-            if (thisCollider is not BoxCollider2D thisBox)
+
+            if (thisCollider is PolygonCollider2D thisPoly)
             {
-                Debug.LogError($"Cannot check movable cargo with Collider type {thisCollider.GetType()}", thisCollider);
-                return false;
+                return thisPoly.points.All(p =>
+                {
+                    var worldPos = transform.position + transform.right * p.x + transform.up * p.y;
+
+                    return targetCollider2D.OverlapPoint(worldPos);
+                });
+            }
+            
+            if (thisCollider is BoxCollider2D thisBox)
+            {
+                return InAreaBox(targetCollider2D, thisBox);
             }
 
+            Debug.LogError($"Cannot check movable cargo with Collider type {thisCollider.GetType()}", thisCollider);
+            return false;
+
+        }
+
+        private void OnDrawGizmos()
+        {
+            if (thisCollider is PolygonCollider2D thisPoly)
+            {
+                foreach (var p in thisPoly.points)
+                {
+                    var world = transform.position + transform.right * p.x + transform.up * p.y;
+                    Gizmos.DrawSphere(world, .1f);
+
+                    // Gizmos.DrawSphere((Vector2)transform.position+p, .1f);
+                }
+            }
+        }
+
+        private bool InAreaBox(Collider2D targetCollider2D, BoxCollider2D thisBox)
+        {
             var scaleSize = thisBox.size * transform.localScale;
             var topRight = transform.position + (scaleSize.x * 0.5f * transform.right + scaleSize.y * 0.5f * transform.up);
             var bottomRight = transform.position + (scaleSize.x * 0.5f * transform.right + scaleSize.y * 0.5f * -transform.up);
@@ -85,16 +118,13 @@ namespace TradingPost
                          targetCollider2D.OverlapPoint(bottomRight) &&
                          targetCollider2D.OverlapPoint(bottomLeft) &&
                          targetCollider2D.OverlapPoint(topLeft);
-            
+
             var col = inArea ? Color.red : Color.blue;
-            Debug.DrawLine( topRight, bottomRight, col);
+            Debug.DrawLine(topRight, bottomRight, col);
             Debug.DrawLine(bottomRight, bottomLeft, col);
             Debug.DrawLine(bottomLeft, topLeft, col);
             Debug.DrawLine(topLeft, topRight, col);
-            
             return inArea;
-            // var bLeft = bColl.bounds.
-
         }
     }
 }

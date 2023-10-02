@@ -18,6 +18,7 @@ MonoBehaviour:
   Selling:
   - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
   - {fileID: 11400000, guid: e092a104a2286264aae7984397631f0c, type: 2}
+  - {fileID: 11400000, guid: fd641038f9020e849b7f46ae6c54c5b6, type: 2}
   Buying:
   - {fileID: 11400000, guid: 4506836d9cab8ba449053c817bcaf5aa, type: 2}
   - {fileID: 11400000, guid: 1caf44fc01517a84e9cb0a7279607e55, type: 2}
