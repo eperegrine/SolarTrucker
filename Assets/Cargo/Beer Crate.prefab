@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7836770537112186126}
   - component: {fileID: 2285348790533148845}
   - component: {fileID: 4454602760225525490}
-  - component: {fileID: 4909620552624690288}
+  - component: {fileID: 5944300354123025267}
   m_Layer: 7
   m_Name: Beer Crate
   m_TagString: Untagged
@@ -126,8 +126,8 @@ MonoBehaviour:
   SelectedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   DeselectedColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
   playerOwned: 1
---- !u!61 &4909620552624690288
-BoxCollider2D:
+--- !u!60 &5944300354123025267
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -142,13 +142,20 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 1.75, y: 2}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.49579847, y: 2.0015893}
+      - {x: -0.8859366, y: 1.3576897}
+      - {x: -0.875, y: 0.63695025}
+      - {x: -0.50709844, y: -0.00487566}
+      - {x: 0.44859004, y: -0.00487566}
+      - {x: 0.8896272, y: 0.6125717}
+      - {x: 0.875, y: 1.3599426}
+      - {x: 0.4370699, y: 2}
