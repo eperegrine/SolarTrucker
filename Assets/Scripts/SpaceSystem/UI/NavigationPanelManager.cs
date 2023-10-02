@@ -21,6 +21,7 @@ namespace SpaceSystem
 
         public void PostAction()
         {
+            SpaceSystemManager.Instance.SetTarget();
             UpdateUI();
         }
 

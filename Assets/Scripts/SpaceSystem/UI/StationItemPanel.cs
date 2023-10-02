@@ -25,7 +25,7 @@ namespace SpaceSystem
         public void OnButtonActivated()
         {
             MissionManager.SetTargetTp(StationInfo.Id);
-            SpaceSystemManager.Instance.SetTarget();
+            // SpaceSystemManager.Instance.SetTarget();
         }
     }
 }
