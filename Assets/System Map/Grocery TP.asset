@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Grocery TP
   m_EditorClassIdentifier: 
   Id: B
-  Name: TP - Grocery
+  Name: Grocery
   Description: A grocery trading post
   Selling:
   - {fileID: 11400000, guid: ec885bc08fc22c4499bad95fba889765, type: 2}
@@ -22,3 +22,5 @@ MonoBehaviour:
   Buying:
   - {fileID: 11400000, guid: 4506836d9cab8ba449053c817bcaf5aa, type: 2}
   - {fileID: 11400000, guid: 1caf44fc01517a84e9cb0a7279607e55, type: 2}
+  - {fileID: 11400000, guid: 7ed0a00bae82906499c1eaaf8c6e7d40, type: 2}
+  - {fileID: 11400000, guid: f2db5546a8a464e648276c0629dd3692, type: 2}

@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 7836770537112186126}
   - component: {fileID: 2285348790533148845}
   - component: {fileID: 4454602760225525490}
-  - component: {fileID: 4909620552624690288}
+  - component: {fileID: 4598609850522279406}
   m_Layer: 7
-  m_Name: Beer Crate
+  m_Name: Asteroid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: -660757643
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5945956737216821121, guid: e3fd97666d5bc4c42af4df921100e95d, type: 3}
+  m_Sprite: {fileID: -194961243177655089, guid: 6b4023e561fbc4440a0666cd359ac659, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,12 +122,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Renderer: {fileID: 0}
   Rigidbody: {fileID: 0}
-  CargoInfo: {fileID: 11400000, guid: e092a104a2286264aae7984397631f0c, type: 2}
+  CargoInfo: {fileID: 11400000, guid: f2db5546a8a464e648276c0629dd3692, type: 2}
   SelectedColor: {r: 1, g: 0.514151, b: 0.514151, a: 1}
   DeselectedColor: {r: 0.8584906, g: 0.8584906, b: 0.8584906, a: 1}
   playerOwned: 1
---- !u!61 &4909620552624690288
-BoxCollider2D:
+--- !u!60 &4598609850522279406
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -143,12 +143,18 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.8125, y: 1.75}
     newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 2, y: 2}
-  m_EdgeRadius: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.7518722, y: 0.17890584}
+      - {x: -0.29103398, y: 0.87957215}
+      - {x: 0.46981382, y: 0.8756298}
+      - {x: 0.9129536, y: 0.15764642}
+      - {x: 0.60860944, y: -0.47814584}
+      - {x: -0.16958356, y: -0.876256}
+      - {x: -0.89964354, y: -0.5333419}

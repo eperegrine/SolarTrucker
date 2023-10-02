@@ -66,6 +66,11 @@ namespace TradingPost
             
             UpdateMoneyLabel();
         }
+        
+        public void RemoveMission(Mission mission)
+        {
+            AvailableMissions.Remove(mission);
+        }
 
         public void UpdateMoneyLabel()
         {

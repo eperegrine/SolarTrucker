@@ -1,5 +1,6 @@
 using ItemDatabase;
 using TMPro;
+using TradingPost;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
@@ -25,6 +26,7 @@ namespace Missions
         public void OnButtonActivated()
         {
             MissionManager.AddMission(MissionInfo);
+            TradingPostGameManager.Instance.RemoveMission(MissionInfo);
         }
     }
 }

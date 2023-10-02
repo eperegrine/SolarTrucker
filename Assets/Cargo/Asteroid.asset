@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1223c39e3b2b44b7bda372ce9a9f7383, type: 3}
+  m_Name: Asteroid
+  m_EditorClassIdentifier: 
+  Info:
+    Id: ASTEROID
+    Name: Asteroid
+    BuyValue: 70
+    SellValue: 70
+  Prefab: {fileID: 3213677793019083533, guid: 22394c66aeba946dfb37155988f4f2c1, type: 3}
+  Icon: {fileID: -194961243177655089, guid: 6b4023e561fbc4440a0666cd359ac659, type: 3}
