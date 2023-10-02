@@ -13,9 +13,29 @@ public class MenuScript : MonoBehaviour
     public TMP_Dropdown QualityDropdown;
     public Toggle FullscreenToggle;
 
+    [Header("Audio")] 
+    public Slider Volume;
+    
     private void Start()
     {
         UpdateGraphicsOptionsUI();
+        UpdateAudioUI();
+    }
+
+    private void UpdateAudioUI()
+    {
+        var audio = PlayerPrefs.GetFloat(SpaceTruckerConstants.VolumeKey, 1);
+        audio = Math.Clamp(audio, 0, 1);
+        Volume.value = audio;
+        Volume.maxValue = 1;
+        Volume.minValue = 0;
+    }
+
+    public void ApplyAudio()
+    {
+        var vol = Volume.value;
+        PlayerPrefs.SetFloat(SpaceTruckerConstants.VolumeKey, vol);
+        UpdateAudioUI();
     }
 
     public void Play()
