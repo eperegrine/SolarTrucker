@@ -128,12 +128,14 @@ namespace TradingPost
             if (BuyMenu.triggered)
             {
                 BuyMenuPanel.SetActive(!BuyMenuPanel.activeSelf);
+                if (BuyMenuPanel.activeSelf) MissionBoardPanel.SetActive(false);
             }
             
             if (MissionBoard.triggered)
             {
                 TradingPostGameManager.Instance.MissionPanelManager.UpdateUI();
                 MissionBoardPanel.SetActive(!MissionBoardPanel.activeSelf);
+                if (MissionBoardPanel.activeSelf) BuyMenuPanel.SetActive(false);
             }
             
             #if UNITY_EDITOR

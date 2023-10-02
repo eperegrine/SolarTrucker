@@ -58,7 +58,7 @@ namespace TradingPost
                 ShipLoadingController.LoadCargo(currentCargo);
             }
 
-            for (var i = 0; i < 3; i++)
+            for (var i = 0; i < 6; i++)
             {
                 var otherPosts = SystemRegistry.TradingPosts.Where(x => x.Id != TradingPostInfo.Id).ToArray();
                 AvailableMissions.Add(MissionBuilder.Generate(CargoRegistry, otherPosts));
