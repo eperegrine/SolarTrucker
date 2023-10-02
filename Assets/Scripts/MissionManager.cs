@@ -21,6 +21,11 @@ public static class MissionManager
     {
         PlayerPrefs.SetString(SpaceTruckerConstants.TargetTradingPost, tpId);
     }
+    
+    public static string GetTargetTp()
+    {
+        return PlayerPrefs.GetString(SpaceTruckerConstants.TargetTradingPost);
+    }
 
     public static void SaveDb(MissionDatabase db)
     {

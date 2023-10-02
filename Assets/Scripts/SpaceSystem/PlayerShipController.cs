@@ -12,7 +12,7 @@ namespace SpaceSystem
         private InputAction Acceleration;
         private InputAction Rotation;
         private InputAction Dock;
-
+        
     
         //Class
         public float AccelSpeed = 5f;

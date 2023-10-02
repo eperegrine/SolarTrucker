@@ -3,6 +3,7 @@ using System.Linq;
 using CargoManagement;
 using SystemMap;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 
 namespace SpaceSystem
@@ -22,13 +23,19 @@ namespace SpaceSystem
                 return _instance;
             }
         }
+        
+        public InputActionAsset ActionAsset;
+        private InputAction NavMenu;
+        public GameObject NavPanel;
 
         public TargetController _TargetController;
         public SystemRegistry SystemRegistry;
         public CargoRegistry CargoRegistry;
         public GameObject Player;
+        
         private void Start()
         {
+            NavMenu = ActionAsset.FindAction("OpenNavMenu");
             var lastTp = PlayerPrefs.GetString(SpaceTruckerConstants.TradingPostKey);
             if (!string.IsNullOrWhiteSpace(lastTp))
             {
@@ -40,6 +47,14 @@ namespace SpaceSystem
             }
             
             SetTarget();
+        }
+
+        private void Update()
+        {
+            if (NavMenu.triggered)
+            {
+                NavPanel.SetActive(!NavPanel.activeSelf);
+            }
         }
 
         public void SetTarget()

@@ -860,7 +860,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "MissionBoard",
+                    "name": "OpenNavMenu",
                     "type": "Button",
                     "id": "f384c9e6-e377-4246-9738-ffe858e0bb3c",
                     "expectedControlType": "Button",
@@ -1031,7 +1031,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "DefaultScheme",
-                    "action": "MissionBoard",
+                    "action": "OpenNavMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -1042,7 +1042,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "DefaultScheme",
-                    "action": "MissionBoard",
+                    "action": "OpenNavMenu",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
