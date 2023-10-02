@@ -30,7 +30,7 @@ namespace ItemDatabase
             var cargoIndex = intRand.Next(tp.Buying.Count);
             var item =tp.Buying[cargoIndex];
             
-            var qty = intRand.Next(1, 3);
+            var qty = intRand.Next(1, 5);
             var reward = (int)(item.Info.BuyValue * qty * Random.Range(MinRewardMult, MaxRewardMult));
             return new Mission()
             {
