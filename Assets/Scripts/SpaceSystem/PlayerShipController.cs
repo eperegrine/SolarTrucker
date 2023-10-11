@@ -12,18 +12,25 @@ namespace SpaceSystem
         private InputAction Acceleration;
         private InputAction Rotation;
         private InputAction Dock;
-        
-    
+        private InputAction Fire;
+
         //Class
+        [Header("Movement")]
         public float AccelSpeed = 5f;
         public float RotSpeed = 2f;
 
+        [Header("Weapons")]
+        public float Damage = 5f;
+        public float BulletForce = 10f;
+        public GameObject Bullet;
+        public Transform Barrel;
+        
+        [Header("Docking")]
         public LayerMask DockerLayer;
         public float DockerDist = 1f;
         [Min(2)]
         public int DockerRays = 5;
         public float DockingWidth = 2f;
-
         public GameObject DockingInstruction;
     
         private Rigidbody2D _rb;
@@ -35,6 +42,7 @@ namespace SpaceSystem
             Acceleration = ActionMap.FindAction("Acceleration");
             Rotation = ActionMap.FindAction("Rotation");
             Dock = ActionMap.FindAction("Dock");
+            Fire = ActionMap.FindAction("Fire");
 
             _rb = GetComponent<Rigidbody2D>();
         }
@@ -46,6 +54,16 @@ namespace SpaceSystem
                 Debug.Log("Try Dock", DetectedDock);
                 var docker = DetectedDock.GetComponent<DockingPoint>();
                 docker.Dock();
+            }
+
+            if (Fire.triggered)
+            {
+                var bulletObj = Instantiate(Bullet, Barrel.position, Barrel.rotation);
+                var bullet = bulletObj.GetComponent<Bullet>();
+                bullet.Damage = Damage;
+                var bulletRb = bulletObj.GetComponent<Rigidbody2D>();
+                bulletRb.velocity = _rb.velocity;
+                bulletRb.AddForce(Barrel.up * BulletForce, ForceMode2D.Impulse);
             }
             
             if (Input.GetKeyDown(KeyCode.Escape)) SceneManager.LoadScene("MainMenu");
