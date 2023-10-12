@@ -1,5 +1,6 @@
 ﻿
 using System;
+using SpaceSystem;
 using UnityEngine;
 
 public class PlayerHealth : Health
@@ -18,6 +19,6 @@ public class PlayerHealth : Health
     public override void RunDeath()
     {
         Debug.Log("Player Dead");
-        base.RunDeath();
+        SpaceSystemManager.Instance.PlayerDied();
     }
 }
