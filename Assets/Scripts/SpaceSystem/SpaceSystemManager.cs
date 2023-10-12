@@ -88,7 +88,12 @@ namespace SpaceSystem
             PlayerPrefs.SetString(SpaceTruckerConstants.TradingPostKey, tp.Id);
             SceneManager.LoadScene(SpaceTruckerConstants.TradingPostScene);
         }
-        
+
+
+        public void PlayerDied()
+        {
+            SceneManager.LoadScene(SpaceTruckerConstants.SpaceScene);
+        }
 
         private void OnDestroy()
         {
