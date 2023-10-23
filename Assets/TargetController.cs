@@ -8,11 +8,13 @@ public class TargetController : MonoBehaviour
     public GameObject Target;
     public Camera ActiveCamera;
 
+    public float padding = 20f;
+    
     private void Update()
     {
         var sp = ActiveCamera.WorldToScreenPoint(Target.transform.position);
-        float xpos = Mathf.Clamp(sp.x, 0, Screen.width);
-        float ypos = Mathf.Clamp(sp.y, 0, Screen.height);
+        float xpos = Mathf.Clamp(sp.x, padding, Screen.width-padding);
+        float ypos = Mathf.Clamp(sp.y, padding, Screen.height-padding);
         transform.position = new Vector3(xpos, ypos);
 
     }
