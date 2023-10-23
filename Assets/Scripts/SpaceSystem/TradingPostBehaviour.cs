@@ -10,7 +10,8 @@ namespace SpaceSystem
 
         private void Start()
         {
-            DockingPoints.ForEach(x => x.TradingPostInfo = Info);
+            var counter = 0;
+            DockingPoints.ForEach(x => x.SetTradingPost(Info, counter++));
         }
     }
 }

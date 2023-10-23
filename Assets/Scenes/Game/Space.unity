@@ -1576,7 +1576,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4204863198970672016, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
       propertyPath: m_Name
-      value: TradingPost - Grocery (1)
+      value: Trading Post - Hosptial
       objectReference: {fileID: 0}
     - target: {fileID: 6549029479721387042, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
       propertyPath: m_Name
@@ -2869,6 +2869,132 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1564749914}
   m_CullTransparentMesh: 1
+--- !u!1001 &1656708220
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -29.49
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 17.17
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9238795
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.38268366
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4014772436464950261, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -45
+      objectReference: {fileID: 0}
+    - target: {fileID: 4204863198970672016, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_Name
+      value: TradingPost-ShipYard (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549029479721387042, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_Name
+      value: Docking Point B
+      objectReference: {fileID: 0}
+    - target: {fileID: 6549029481452712524, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_Name
+      value: Docking Point A
+      objectReference: {fileID: 0}
+    - target: {fileID: 7545700508125541404, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3071488315896897394, guid: d8e8e4eb68338674485232ec8d10caf5, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+--- !u!1 &1656708221 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4204863198970672016, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+  m_PrefabInstance: {fileID: 1656708220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656708222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6549029479721387042, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+  m_PrefabInstance: {fileID: 1656708220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656708223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6549029481452712524, guid: 142e50e14147f764f89ff3aec1a80d81, type: 3}
+  m_PrefabInstance: {fileID: 1656708220}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1656708224
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656708221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5297f446d6134c8b9ff43bf4cf3be514, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Info: {fileID: 11400000, guid: 1b0bb3957507ed94e8cb4a2c2d216d95, type: 2}
+  DockingPoints:
+  - {fileID: 1656708226}
+  - {fileID: 1656708225}
+--- !u!114 &1656708225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656708222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f704cf8eb3542878cb6d3b985ab0209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TradingPostInfo: {fileID: 0}
+--- !u!114 &1656708226
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1656708223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f704cf8eb3542878cb6d3b985ab0209, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TradingPostInfo: {fileID: 0}
 --- !u!1001 &1657813177
 PrefabInstance:
   m_ObjectHideFlags: 0

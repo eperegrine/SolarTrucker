@@ -8,4 +8,5 @@
     public const string SpaceScene = "Space";
     public const string MissionDbKey = "MISSIONS";
     public const string VolumeKey = "VOLUME";
+    public const string DockingIndex = "LAST_DOCKER_INDEX";
 }

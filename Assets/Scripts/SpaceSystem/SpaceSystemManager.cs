@@ -37,12 +37,19 @@ namespace SpaceSystem
         {
             NavMenu = ActionAsset.FindAction("OpenNavMenu");
             var lastTp = PlayerPrefs.GetString(SpaceTruckerConstants.TradingPostKey);
+            var dockerIndex = PlayerPrefs.GetInt(SpaceTruckerConstants.DockingIndex, 0);
             if (!string.IsNullOrWhiteSpace(lastTp))
             {
                 var tp = GetTradingPost(lastTp);
                 if (tp != null)
                 {
-                    Player.transform.position = tp.DockingPoints.First().transform.position;
+                    if (dockerIndex > tp.DockingPoints.Count - 1)
+                    {
+                        dockerIndex = 0;
+                    }
+                    var dockingPoint = tp.DockingPoints[dockerIndex].transform;
+                    Player.transform.rotation = dockingPoint.rotation;
+                    Player.transform.position = dockingPoint.position;
                 }
             }
             
