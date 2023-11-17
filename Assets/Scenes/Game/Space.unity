@@ -980,8 +980,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 825702633}
   cam: {fileID: 0}
+  Multiplier: 2
   MinSize: 12
-  MaxSize: 40
+  MaxSize: 70
 --- !u!1 &505299307
 GameObject:
   m_ObjectHideFlags: 0
@@ -2383,6 +2384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Target: {fileID: 6969460406914387408}
   ActiveCamera: {fileID: 493269394}
+  padding: 20
 --- !u!114 &1256611171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4003,8 +4005,20 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3807453431098283880, guid: 1c1cae629a54e62408120d396fa973e1, type: 3}
     - target: {fileID: 8223746958344699885, guid: 822ce294f1dcf644da557c11d3284f7a, type: 3}
+      propertyPath: RotSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223746958344699885, guid: 822ce294f1dcf644da557c11d3284f7a, type: 3}
+      propertyPath: AccelSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8223746958344699885, guid: 822ce294f1dcf644da557c11d3284f7a, type: 3}
       propertyPath: DockingInstruction
       value: 
       objectReference: {fileID: 550759702}
+    - target: {fileID: 8223746958344699887, guid: 822ce294f1dcf644da557c11d3284f7a, type: 3}
+      propertyPath: m_AngularDrag
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 822ce294f1dcf644da557c11d3284f7a, type: 3}

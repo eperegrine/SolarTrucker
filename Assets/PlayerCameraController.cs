@@ -8,6 +8,7 @@ public class PlayerCameraController : MonoBehaviour
     public Rigidbody2D Target;
     public Camera cam;
 
+    public float Multiplier = 2f;
     public float MinSize = 7f;
     public float MaxSize = 40f;
     
@@ -19,9 +20,9 @@ public class PlayerCameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var newSize = Target.velocity.magnitude;
+        var newSize = Multiplier * Target.velocity.magnitude;
         newSize = Mathf.Max(MinSize, newSize);
         newSize = Mathf.Min(MaxSize, newSize);
-        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newSize, .1f);
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, newSize, 3f);
     }
 }
